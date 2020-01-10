@@ -1,4 +1,11 @@
-# ioo-bmce-captech project
+# Forecasting of financial trends
+
+## Context 
+Predicting the subjects that would gain traction in financial fields in future weeks, using natural language processing and automating the analysis of the growing trends in all sorts of media in the past weeks, using bigrams and numerous scores such as TF-IDF, as well as sentiment analysis, with machine learning for future score prediction.
+
+The data used for these scripts was scrapped from media and electronic journals.
+
+
 ## Scripts
 The order of using the scripts is (some modifications are due in the main scripts to make it include all weeks and years, but the functions used remain the same) : 
 - `process.py` to process the dates of the articles into the same format. The `processed_data.json` file contains the processed articles that are the output of this step, that can directly be imported into the mongodb
@@ -11,9 +18,5 @@ The order of using the scripts is (some modifications are due in the main script
 
 
 ## Database
-The titles of the collections needed can be found in the beginning of its scripts.
-
-
-## Front End 
-The `app.js` file here will have to replace the same file in the front end code, with the data in the localhost mongodb database. 
+The titles of the collections needed can be found in the beginning of its scripts. The database used is Mongodb Atlas. You can choose to make it on localhost, or put in each script the link of your Atlas Cluster.
 

@@ -1,0 +1,276 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+    background-color: white;
+    align-items: stretch;
+} 
+#logo{
+    padding-left:10px;
+}
+#tripleButton{
+    border-color: rgb(19, 86, 185);
+    background-color:rgb(230, 230, 230);
+    color: rgb(19, 86, 185) ;
+    font-size:10px;
+    height: 30px;
+    width: 120px;
+}
+a{
+    text-decoration: none !important;
+    color: rgb(19, 86, 185);
+    height: auto;
+}
+#tripleButton:hover{
+    
+    background-color: rgb(19, 86, 185);
+    transition-duration: 0.2s;
+    color: white !important;
+}
+.selectedtab
+{
+  background-color : rgb(19, 86, 185);
+  transition-duration : 0.2s;
+  color: white !important;
+}
+
+ /* The switch - the box around the slider */
+ .switch {
+    vertical-align:middle;
+
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+      
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  } 
+  #dashContent{
+      background-color: rgb(231, 231, 231);
+      height: 100vh;
+  }
+  #box1{
+      
+      height:300px;
+      background-color: white;
+  }
+  #box2{
+    display: block;
+    margin-left: 20px;
+    height:300px;
+    background-color: white;
+}
+
+#box3{
+      
+    height:300px;
+    background-color: white;
+}
+#box4{
+  display: block;
+  margin-left: 20px;
+  height:300px;
+  background-color: white;
+}
+
+.topicsElement
+{
+  background:#EEEEEE;
+  height: 40px;
+  width:auto;
+  padding:5px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  font-size: small;
+  border-radius: 30px;
+  color:black;
+  
+}
+
+.topicsElementSelected
+{
+  background:#365692;
+  color:white;
+  height: 40px;
+  width:auto;
+  padding:5px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  font-size: small;
+  border-radius: 30px
+  
+}
+/* model; */
+
+.overlay {
+  position: fixed;
+  z-index: 40;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 10px auto;
+  padding: 10px;
+  background: #fff;
+  border-radius: 5px;
+  width: 60%;
+  position: relative;
+  z-index: 20000;
+  transition: all 1s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #C0C0C0;
+}
+.popup .close:hover {
+  color: #0078D7;
+}
+.popup .content {
+  /* max-height: 30%; */
+  overflow: auto;
+}
+.articlesElement
+{
+  width:100%;
+  border-style: solid;
+}
+.separator
+{
+  margin-top:10px;
+  width:100%;
+  height: 4px;
+  background: #EBEDF1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 48%;
+  padding: 10px;
+  height: auto; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.modelInput
+{
+  border-color: #C1C1C1;
+  color:#C1C1C1;
+  padding:2px;
+  border-radius: 30px;
+  height: 40px;
+  width:260px
+}
+.modalButton
+{
+  background: #9DC3E6;
+  border-width: 0px;
+  color:white;
+  border-radius: 30px;
+  width:80px;
+  height: 40px;
+}
+.entreprise
+{
+  background:#EEEEEE;
+  color:#0254A4;
+  padding:5px;
+  margin-left: 5px;
+  border-radius: 10px;
+  line-height: 30px;
+
+}
+.go{
+  background: #4E2D76;
+  width:160px;
+  border-radius: 30px;
+  color:white;
+  font-weight: bold;
+  height: 35px;
+  border-width: 0px;
+  margin-top: 5px;
+}

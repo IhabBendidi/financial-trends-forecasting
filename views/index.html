@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+
+
+
+  <title>BMCE DASHBOARD</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <!-- Imports of Angular JQuery and our script too -->
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <!-- optional: mobile support with jqueryui-touch-punch -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="script.js"></script>
+
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+
+
+
+  <link href="dist/the-datepicker.css" rel="stylesheet" />
+
+  <script src="dist/the-datepicker.js"></script>
+
+</head>
+
+<body ng-app="myapp" ng-controller="MainCtrl">
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-4">
+        <img style="margin:-20px;" id="logo" src="logoBMCE.png" alt=""><br>
+        <span style="color:#0254A4;font-weight: bold;">MARKET TRENDS SMART MEDIA LISTENING</span><br><br>
+      </div>
+      <div style="text-align:center; padding: 30px;" class="col-4">
+          <span style="width: 100%; text-align: left; display: block;padding-left: 30px;font-weight: bold;font-size: 11px;">Industry selector</span>
+        <div style="text-align: center;" class="btn-group" role="group" aria-label="Basic example">
+          <a  href="http://"><button id="tripleButton" type="button" class="btn btn-secondary"
+              style="border-radius: 30px 0 0 30px; background-color : rgb(19, 86, 185);color: white !important;"> Marché financiers </button></a>
+          <a href="http://"><button id="tripleButton" type="button" class="btn btn-secondary"
+              style="border-radius: 0px"> Energy & Mining </button></a>
+          <a href="http://"><button id="tripleButton" type="button" class="btn btn-secondary"
+              style="border-radius: 0 30px 30px 0 ;"> Immobilier </button></a>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div style="font-size: 11px;" class="col-6">
+            <br>
+            <div style="padding-top: 20px;" class="row">
+              <p style="margin-right: 43px;">Top 1000 focus</p>
+              <label class="switch">
+                <input type="checkbox" name="chb1" id="chb1">
+                <span class="slider round"></span>
+              </label>
+              <p style="margin-right: 30px;">Casablanca focus</p>
+              <label class="switch">
+                <input type="checkbox" name="chb2" id="chb2&">
+                <span class="slider round"></span>
+              </label>
+            </div>
+
+
+
+          </div>
+
+          <div style="margin-top: 30px; " class="col-4"> <input type="text"  name="date"  id="example">
+            <button id="godate" class="go">Explore</button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="dashContent" class="container-fluid" style="height: auto;">
+
+    <div style=" padding: 20px;" class="row">
+      <div id="box1" class="col-7">
+          <span style="font-weight: bold; line-height: 40px; " >Hot Topics  </span> <br>
+
+        <div ng-if="pos_neg==false" style=" direction: rtl;
+        overflow-x: hidden!important;
+        overflow:auto;
+        height:250px;
+        width:100%;">
+          <table style="color:#033D93">
+
+            <tr ng-repeat="object in bigramsList track by $index">
+              <th style="font-weight: normal;color:black;" ng-if="object.top==true">
+                <span class="entreprise" ng-repeat="e in object.entreprises">
+                  {{e}}
+                </span>
+
+              </th>
+              <th style="width: 40px;" ng-if="object.top==true">
+                <img ng-click="model(object)" style="width:40px;padding-left:10px;" src="loupe.png" />
+              </th>
+
+
+              <th style="text-align: left;font-weight: normal;padding-left: 2px;" ng-if="object.top==true">
+                {{object.AnomalieScore}}%+ | {{object.PersistanceScopre}}%
+              </th>
+              <th ng-if="object.top==true">
+                <img style="width:20px;height: 10px;padding-left:10px;" src="up.png" />
+              </th>
+              <th ng-if="object.top==true">
+                <div ng-class="object.class">
+                  <table style="width: 100%;">
+                    <tr>
+                      <th style="width:11px">
+                        <img ng-click="removeElement(object)"
+                          style="z-index:10;width:20px;height: 10px;padding-left:10px;" src="close.png" />
+                      </th>
+                      <th style="text-align: center;font-weight: normal;vertical-align: middle;"
+                        ng-click="addWord(object)">
+                        {{object.Topic_Bigram}}
+                      </th>
+                    </tr>
+                  </table>
+                </div>
+              </th>
+            </tr>
+
+          </table>
+        </div>
+
+
+        <table ng-if="pos_neg==true">
+          <tr>
+            <th>
+              <div style=" direction: rtl;
+                overflow-x: hidden!important;
+                overflow:auto;
+                height:250px;
+                width:345px;">
+                <table style="color:#033D93">
+                  <tr ng-repeat="object in bigramsList track by $index">
+                    <th style="width: 40px;" ng-if="object.updown === 'pos'">
+                      <img ng-click="model(object)" style="width:40px;padding-left:10px;" src="loupe.png" />
+                    </th>
+
+
+                    <th style="text-align: left;font-weight: normal;padding-left: 2px;" ng-if="object.updown === 'pos'">
+                      {{object.AnomalieScore}}%+ | {{object.PersistanceScopre}}%
+                    </th>
+                    <th ng-if="object.updown === 'pos'">
+                      <img style="width:20px;height: 10px;padding-left:10px;" src="up.png" />
+                    </th>
+                    <th ng-if="object.updown === 'pos'">
+                      <div ng-class="object.class">
+                        <table style="width: 100%;">
+                          <tr>
+                            <th style="width:11px">
+                              <img ng-click="removeElement(object)" style="width:20px;height: 10px;padding-left:10px;"
+                                src="close.png" />
+                            </th>
+                            <th style="text-align: center;font-weight: normal;vertical-align: middle;"
+                              ng-click="addWord(object)">
+                              {{object.Topic_Bigram}}
+                            </th>
+                          </tr>
+                        </table>
+                      </div>
+                    </th>
+                  </tr>
+
+                </table>
+              </div>
+            </th>
+            <th>
+              <div style=" direction: rtl;
+                overflow-x: hidden!important;
+                overflow:auto;
+                height:250px;
+                width:345px;
+                ">
+                <table style="color:#033D93">
+                  <tr ng-repeat="object in bigramsList track by $index">
+                    <th style="width: 40px;" ng-if="object.updown === 'neg'">
+                      <img ng-click="model(object)" style="width:40px;padding-left:10px;" src="loupe.png" />
+                    </th>
+
+
+                    <th style="text-align: left;font-weight: normal;padding-left: 2px;" ng-if="object.updown === 'neg'">
+                      {{object.AnomalieScore}}%- | {{object.PersistanceScopre}}%
+                    </th>
+                    <th ng-if="object.updown === 'neg'">
+                      <img style="width:20px;height: 10px;padding-left:10px;" src="down.png" />
+                    </th>
+                    <th ng-if="object.updown === 'neg'">
+                      <div ng-class="object.class">
+                        <table style="width: 100%;">
+                          <tr>
+                            <th style="width:11px">
+                              <img ng-click="removeElement(object)"
+                                style="z-index:2;width:20px;height: 10px;padding-left:10px;" src="close.png" />
+                            </th>
+                            <th style="text-align: center;font-weight: normal;vertical-align: middle;"
+                              ng-click="addWord(object)">
+                              {{object.Topic_Bigram}}
+                            </th>
+                          </tr>
+                        </table>
+                      </div>
+                    </th>
+                  </tr>
+
+                </table>
+              </div>
+            </th>
+          </tr>
+        </table>
+      </div>
+      <div id="box2" class="col" >
+        <table style="width:100%;">
+          <tr style="width: 100%;">
+            <th>
+                <span style="font-weight: bold; " >Topics quick search </span> <br>
+            </th>
+            <th style="margin-right:0px;width:300px;">
+                <img src="search.png" style="width:300px"/>
+            </th>
+          </tr>
+        </table>
+       
+        <div style="width:100%;">
+            <img src="image.png" style="margin-left: auto; margin-right: auto; display: block;width:470px;"/>
+        </div>
+       
+        <div>
+
+      </div>
+      
+
+      </div>
+    </div>
+    <div class="row" style="height: auto;">
+      <div id="box3" class="col-7" style="height:340px">
+          <span style="font-weight: bold; line-height: 40px;position: absolute;top:0; " >Topics Trends</span>
+          <br>
+       
+        <!-- <script>
+            var myChart = new Chart(ctx, {...});
+        </script> -->
+
+        <!-- plot -->
+        <canvas id="myChart" style="max-width: 700px;;max-height:300px"></canvas>
+
+      </div>
+      <div id="box4" class="col" style="padding: 10px;height: 340px; ">
+          <span style="font-weight: bold; line-height: 40px;position: absolute;top:0; " >Companies follow-up</span>
+          <br>
+        <table>
+          <tr>
+            <th>
+                <canvas id="myChart3" style="background:white;margin-right:30px;margin-top: 10px;max-width: 400px;height:270px"></canvas>
+            </th>
+            <th>
+              <table>
+                <tr ng-repeat="i in entreprises.names" style="line-height: 32px;">
+                  <th>
+                      <img src="view.png" style="width:90%"/>
+                  </th>
+                </tr>
+              </table>
+            </th>
+          </tr>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- model -->
+
+  <div id="popup1" class="overlay">
+    <div class="popup" >
+      <table style="width:90%;margin-bottom: 0px;max-height: 50px;">
+        <tr>
+          <th style="font-size: 18px;font-weight: normal;">
+            Relevant media selection for {{bigram}}
+          </th>
+          <th>
+            <p style="margin-right: 4px;margin-bottom: 3px;">Top 1000 focus</p>
+            <label class="switch">
+              <input type="checkbox" name="chb3" id="chb3">
+              <span class="slider round"></span>
+            </label>
+          </th>
+        </tr>
+      </table>
+      <div class="separator" style="margin-bottom: 10px;"></div>
+
+      <a class="close" href="#">&times;</a>
+      <div class="content">
+        <div style=" direction: rtl;
+            overflow-x: hidden!important;
+            overflow:auto;
+            height:120px;
+            width:100%;
+            font-size: 11px;
+            ">
+          <table>
+            <tr ng-repeat="article in bigramsList[bigramIndex].articles track by $index">
+
+              <th>
+                <img ng-click="showArticle(article)" style="height: 35px;padding-left:4px;" src="view.png" />
+              </th>
+              <th style="color:black;font-weight: normal; ">
+                {{article.article_title}}
+              </th>
+              <th style="color:black;font-weight: normal; width:100px;">
+
+                {{article.article_date}} <br>
+                <!-- {{article.articles_url}} -->
+              </th>
+              <th>
+                <img ng-click="removeElement(object)" style="height:40px;padding-left:10px;" src="bell.png" />
+              </th>
+            </tr>
+          </table>
+        </div>
+        </th>
+        </tr>
+
+        </table>
+        <div class="separator"></div>
+
+
+
+        <div class="row" style="height: 190px;">
+          <div class="column" style="margin-left:20px;padding:10px">
+            {{}}
+            <table ng-if="bigramType==='pos'">
+              <tr>
+                <th><span style="text-transform: uppercase;color:#0254A4;font-weight: bold;">{{bigram}}</span></th>
+                <th> <img style="width:20px;height: 10px;padding-left:10px;" src="up.png" /></th>
+                <th>{{bigramsList[bigramIndex].PersistanceScopre}}% | {{bigramsList[bigramIndex].AnomalieScore}}%</th>
+              </tr>
+            </table>
+            <table ng-if="bigramType==='neg'">
+              <tr>
+                <th><span style="text-transform: uppercase;color:#0254A4;font-weight: bold;">{{bigram}}</span></th>
+                <th> <img style="width:20px;height: 10px;padding-left:10px;" src="down.png" /></th>
+                <th>{{bigramsList[bigramIndex].PersistanceScopre}}% | {{bigramsList[bigramIndex].AnomalieScore}}%</th>
+              </tr>
+            </table>
+            <span style="font-size: 12px;">
+            <span ng-if="bigramType==='pos'">
+              According to our analysis, communications & media publications about topics related to
+            </span>
+            <span ng-if="bigramType==='neg'">
+              According to our analysis, communications & media publications about topics related to
+            </span>
+            <span>
+              «{{bigram}}»
+            </span>
+            <span ng-if="bigramType==='pos'">
+              will significantly increase in the following weeks. Something is happening.
+            </span>
+            <span ng-if="bigramType==='neg'">
+              are not likely to keep buzzing in the following weeks. These topics are outdated.
+            </span>
+          </span>
+            <br>
+            <span style="font-weight: bold;">Set-up an alert : </span><br>
+            <input type="text" placeholder="Your email address..." class="modelInput">
+            <button class="modalButton">Set up</button>
+          </div>
+          <div class="column" style="">
+            <canvas id="myChart2" style="max-width: 500px;;max-height:210px"></canvas>
+          </div>
+        </div>
+        <div class="separator"></div>
+        <table style="width: 100%;">
+          <tr>
+            <th style="color:#033D93">
+              {{bigram}}
+            </th>
+            <th>
+              Global Opinion <div ng-if="bigramsList[bigramIndex].global_opinion_score>0" style="width:20px;height:20px;background: green;color:green;border-radius: 180px; display: inline-block;;"> </div> <div ng-if="bigramsList[bigramIndex].global_opinion_score<=0" style="width:20px;height:20px;background: red;color:red;border-radius: 180px; display: inline-block;;"> </div> <span ng-if="bigramsList[bigramIndex].global_opinion_score>0" style="color:#0254A4;font-weight: normal;"> | +{{bigramsList[bigramIndex].global_opinion_score}}</span><span ng-if="bigramsList[bigramIndex].global_opinion_score<=0" style="color:#0254A4;font-weight: normal;"> | {{bigramsList[bigramIndex].global_opinion_score}}</span>
+            </th>
+            <th>
+              Opinion consistency 
+              <img ng-if="bigramsList[bigramIndex].global_opinion_score<=0" src="croix.png" style="width:35px;display:inline-block"/>
+              <img ng-if="bigramsList[bigramIndex].global_opinion_score>0" src="check.png" style="width:35px;display:inline-block"/>
+            </th>
+          </tr>
+        </table>
+        <div style=" direction: rtl;
+        overflow-x: hidden!important;
+        overflow:auto;
+        height:138px;
+        width:100%;
+        font-size: 11px;">
+      <table>
+        <tr ng-repeat="comment in bigramsList[bigramIndex].comments track by $index">
+
+          <th>
+            <img ng-click="showComment(comment.Article_URL)" style="height: 35px;padding-left:4px;" src="view.png" />
+          </th>
+          <th style="color:black;font-weight: normal; ">
+            {{comment.Phrase}}
+          </th>
+          <th style="color:black;font-weight: normal; width:100px;">
+
+            {{comment.Date_Article}} <br>
+            {{comment.Source_article}}
+            <!-- {{article.articles_url}} -->
+          </th>
+          <th>
+            <div ng-if="comment.opinion_score>0" style="width:20px;height:20px;background: green;color:green;border-radius: 180px; display: inline-block;;"> </div> <div ng-if="comment.opinion_score<=0" style="width:20px;height:20px;background: red;color:red;border-radius: 180px; display: inline-block;;"> </div>
+          </th>
+        </tr>
+      </table>
+    </div>
+    </th>
+    </tr>
+
+    </table>
+    <div class="separator"></div>
+
+
+        <table style="width: 100%;">
+          <tr style="width: 100%;">
+            <th style="width: 80%;text-align: right;">
+              Was this content relevant ?
+            </th>
+            <th style="">
+              <a href="#" style="float:right;;">
+                <img style="height:30px;padding-left:10px;" src="yes.png" /></a>
+            </th>
+            <th style="padding-left: 0;">
+              <a href="#" style="float:left;" ng-if="bigramType==='pos'">
+                <img ng-click="removeElement(bigramElement)" style="height:35px;padding-left:10px;" src="no.png" /></a>
+              <a href="#" style="float:left;" ng-if="bigramType==='neg'">
+                <img ng-click="removeElement(bigramElement)" style="height:35px;padding-left:10px;" src="no.png" /></a>
+            </th>
+          </tr>
+        </table>
+
+      </div>
+
+
+    </div>
+  </div>
+  </div>
+
+ 
+
+    <!-- plot -->
+    <script src="dist2/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.5/chartjs-plugin-annotation.min.js"></script>
+
+</body>
+
+</html>

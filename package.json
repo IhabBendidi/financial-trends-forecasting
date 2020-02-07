@@ -27,7 +27,7 @@
     "google-distance-matrix": "^1.1.1",
     "hashmap": "^2.3.0",
     "mongodb": "^3.3.5",
-    "morgan": "~1.9.0",
+    "morgan": "~1.9.1",
     "mysql": "^2.15.0",
     "pug": "2.0.0-beta11",
     "request": "^2.88.0",
